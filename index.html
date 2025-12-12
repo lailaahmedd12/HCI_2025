@@ -13,7 +13,7 @@
     }
 
     body {
-      background-color: #e7f5e9;
+      background-color: #ffe9f2;
       color: #1d1d1f;
       min-height: 100vh;
       display: flex;
@@ -33,12 +33,13 @@
       flex-wrap: wrap;
     }
 
+    /* PINK CARD */
     .profile-card {
-      background-color: #f6fff8;
+      background-color: #fff0f7;
       border-radius: 24px;
       padding: 32px 28px;
       width: 260px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 12px 30px rgba(255, 140, 180, 0.15);
       text-align: center;
     }
 
@@ -50,7 +51,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #7bc47f;
+      background: #ff97c2;
       color: white;
       font-size: 40px;
       font-weight: 600;
@@ -67,6 +68,7 @@
       color: #555;
     }
 
+    /* Workshops Section */
     .workshops-section {
       flex: 1;
       min-width: 280px;
@@ -75,6 +77,7 @@
     .workshops-section h1 {
       font-size: 28px;
       margin-bottom: 20px;
+      color: #b3006b;
     }
 
     .workshops-grid {
@@ -83,16 +86,19 @@
       gap: 16px 20px;
     }
 
+    /* Workshop Cards */
     .workshop-card {
-      background-color: #f6fff8;
+      background-color: #fff0f7;
       border-radius: 18px;
       padding: 18px 20px 20px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 10px 25px rgba(255, 100, 150, 0.15);
+      border: 1px solid #ffd1e6;
     }
 
     .workshop-card h2 {
       font-size: 18px;
       margin-bottom: 8px;
+      color: #cc007a;
     }
 
     .workshop-card p {
@@ -106,12 +112,14 @@
     }
 
     .workshop-card a {
-      color: #1d6f42;
+      color: #b3006b;
       text-decoration: underline;
+      font-weight: 500;
     }
 
     .workshop-card a:hover {
       text-decoration: none;
+      color: #66003d;
     }
 
     footer {
@@ -122,7 +130,7 @@
     }
 
     footer a {
-      color: #1d6f42;
+      color: #b3006b;
     }
   </style>
 </head>
@@ -147,7 +155,6 @@
             <p><span class="label">Description: </span>This is a link to my first workshop
               submission, where I created one HTML page and added it to the repository.</p>
             <p><span class="label">Link to submission: </span>
-              <!-- TODO: replace # with your real URL -->
               <a href="#" target="_blank">Workshop 1</a>
             </p>
           </article>
@@ -193,8 +200,7 @@
             <h2>Workshop 6</h2>
             <p><span class="label">Description: </span>UX design / journey map for Dan.</p>
             <p><span class="label">Link to submission: </span>
-              <!-- Example: Figma link -->
-              <a href="#" target="_blank">Journey map (Figma)</a>
+              <a href="#" target="_blank">Journey map</a>
             </p>
           </article>
 
@@ -206,22 +212,12 @@
               <a href="#" target="_blank">Link here</a>
             </p>
           </article>
-
-          <!-- Workshop 8 -->
-          <article class="workshop-card">
-            <h2>Workshop 8</h2>
-            <p><span class="label">Description: </span>Short description or key outcomes.</p>
-            <p><span class="label">Link to submission: </span>
-              <a href="#" target="_blank">Link here</a>
-            </p>
-          </article>
         </div>
       </section>
     </div>
 
     <footer>
       Contact me at
-      <!-- TODO: change to your real email -->
       <a href="mailto:your.email@example.com">your.email@example.com</a>
     </footer>
   </div>
