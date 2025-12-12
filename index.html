@@ -4,26 +4,41 @@
   <meta charset="UTF-8" />
   <title>Laila Mansour | HCI Workshops</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- cute Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
     body {
-      background-color: #ffe9f2;
-      color: #1d1d1f;
       min-height: 100vh;
+      background: radial-gradient(circle at top left, #ffe1f2 0, #ffeaf7 30%, #ffeefc 55%, #ffe1f0 85%);
+      color: #27222a;
       display: flex;
       flex-direction: column;
     }
 
     .page {
       max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px 40px;
+      margin: 40px auto 32px;
+      padding: 0 22px 40px;
+    }
+
+    .page-header {
+      margin-bottom: 10px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #b66c9c;
+      font-weight: 600;
     }
 
     .layout {
@@ -33,184 +48,374 @@
       flex-wrap: wrap;
     }
 
-    /* PINK CARD */
+    /* PROFILE CARD */
+
     .profile-card {
-      background-color: #fff0f7;
-      border-radius: 24px;
-      padding: 32px 28px;
-      width: 260px;
-      box-shadow: 0 12px 30px rgba(255, 140, 180, 0.15);
+      background: linear-gradient(145deg, #fff6fb, #ffe5f2);
+      border-radius: 26px;
+      padding: 32px 26px 26px;
+      width: 270px;
+      box-shadow:
+        0 18px 40px rgba(204, 97, 149, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.7);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -40px;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.65), transparent 60%);
+      opacity: 0.8;
+      pointer-events: none;
     }
 
     .avatar {
       width: 120px;
       height: 120px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
+      border-radius: 40%;
+      margin: 0 auto 18px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #ff97c2;
+      background: linear-gradient(135deg, #ff8fbf, #ff6fa8);
       color: white;
-      font-size: 40px;
-      font-weight: 600;
+      font-size: 44px;
+      font-weight: 700;
+      box-shadow: 0 14px 26px rgba(241, 92, 152, 0.45);
     }
 
     .profile-name {
       font-size: 24px;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 4px;
+      color: #3a2335;
     }
 
     .profile-role {
-      font-size: 15px;
-      color: #555;
+      font-size: 14px;
+      color: #7d6177;
+      margin-bottom: 16px;
     }
 
-    /* Workshops Section */
+    .profile-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #b3006b;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #ff6fa8;
+      box-shadow: 0 0 0 4px rgba(255, 111, 168, 0.25);
+    }
+
+    .profile-note {
+      font-size: 13px;
+      color: #7d6177;
+      line-height: 1.4;
+      margin-top: 6px;
+    }
+
+    /* WORKSHOPS SECTION */
+
     .workshops-section {
       flex: 1;
       min-width: 280px;
     }
 
-    .workshops-section h1 {
+    .workshops-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .workshops-title {
       font-size: 28px;
-      margin-bottom: 20px;
+      font-weight: 700;
       color: #b3006b;
+    }
+
+    .workshops-subtitle {
+      font-size: 13px;
+      color: #8c5c7a;
     }
 
     .workshops-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px 20px;
+      gap: 18px 20px;
     }
 
-    /* Workshop Cards */
+    /* WORKSHOP CARDS */
+
     .workshop-card {
-      background-color: #fff0f7;
-      border-radius: 18px;
-      padding: 18px 20px 20px;
-      box-shadow: 0 10px 25px rgba(255, 100, 150, 0.15);
-      border: 1px solid #ffd1e6;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 16px 18px 18px;
+      border: 1px solid #ffd6eb;
+      box-shadow:
+        0 10px 26px rgba(199, 93, 148, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.8);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(0);
+      transition:
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out,
+        border-color 0.18s ease-out,
+        background 0.18s ease-out;
+    }
+
+    .workshop-card:hover {
+      transform: translateY(-4px);
+      box-shadow:
+        0 14px 30px rgba(199, 93, 148, 0.22),
+        0 0 0 1px rgba(255, 255, 255, 0.9);
+      background: #fff7fb;
+      border-color: #ffb7de;
+    }
+
+    .workshop-tag {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 143, 191, 0.12);
+      color: #b3006b;
+      font-weight: 500;
     }
 
     .workshop-card h2 {
-      font-size: 18px;
-      margin-bottom: 8px;
+      font-size: 17px;
+      margin-bottom: 6px;
       color: #cc007a;
     }
 
     .workshop-card p {
-      font-size: 14px;
+      font-size: 13px;
       line-height: 1.4;
       margin-bottom: 4px;
+      color: #5e4255;
     }
 
     .label {
       font-weight: 600;
     }
 
-    .workshop-card a {
+    .pill-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 6px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: #ffe3f3;
       color: #b3006b;
-      text-decoration: underline;
+      text-decoration: none;
+      font-size: 13px;
       font-weight: 500;
+      transition:
+        background 0.18s ease-out,
+        transform 0.18s ease-out,
+        box-shadow 0.18s ease-out;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
     }
 
-    .workshop-card a:hover {
-      text-decoration: none;
-      color: #66003d;
+    .pill-link span.icon {
+      font-size: 14px;
+    }
+
+    .pill-link:hover {
+      background: #ffb7de;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(199, 93, 148, 0.35);
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 32px;
       text-align: center;
-      font-size: 14px;
-      color: #444;
+      font-size: 13px;
+      color: #6b4b61;
     }
 
     footer a {
       color: #b3006b;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* small screen tweaks */
+    @media (max-width: 640px) {
+      .page {
+        margin-top: 24px;
+      }
+      .profile-card {
+        width: 100%;
+      }
+      .workshops-title-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
 <body>
   <div class="page">
+    <div class="page-header">HCI 2025 · Portfolio</div>
+
     <div class="layout">
-      <!-- LEFT PROFILE CARD -->
+      <!-- PROFILE CARD -->
       <section class="profile-card">
         <div class="avatar">LM</div>
         <div class="profile-name">Laila Mansour</div>
         <div class="profile-role">HCI Student</div>
+
+        <div class="profile-badge">
+          <span class="dot"></span>
+          <span>Workshop collection</span>
+        </div>
+
+        <p class="profile-note">
+          A simple GitHub portfolio collecting all workshop submissions for the HCI course.
+        </p>
       </section>
 
-      <!-- RIGHT WORKSHOPS GRID -->
+      <!-- WORKSHOPS -->
       <section class="workshops-section">
-        <h1>Workshops</h1>
+        <div class="workshops-title-row">
+          <h1 class="workshops-title">Workshops</h1>
+          <p class="workshops-subtitle">
+            Links to GitHub repos, PDFs, Figma files, and other submission material.
+          </p>
+        </div>
 
         <div class="workshops-grid">
           <!-- Workshop 1 -->
           <article class="workshop-card">
+            <div class="workshop-tag">HTML page</div>
             <h2>Workshop 1</h2>
-            <p><span class="label">Description: </span>This is a link to my first workshop
-              submission, where I created one HTML page and added it to the repository.</p>
-            <p><span class="label">Link to submission: </span>
-              <a href="#" target="_blank">Workshop 1</a>
+            <p>
+              <span class="label">Description: </span>
+              First workshop submission: simple HTML page hosted in this repository.
             </p>
+            <a class="pill-link" href="#" target="_blank">
+              <span class="icon">↗</span>
+              <span>Open Workshop 1</span>
+            </a>
           </article>
 
           <!-- Workshop 2 -->
           <article class="workshop-card">
+            <div class="workshop-tag">Analysis</div>
             <h2>Workshop 2</h2>
-            <p><span class="label">Description: </span>Short description or key outcomes.</p>
-            <p><span class="label">Link to submission: </span>
-              <a href="#" target="_blank">Link here</a>
+            <p>
+              <span class="label">Description: </span>
+              Portfolio assignment exploration and early UX work in Figma.
             </p>
+            <a class="pill-link"
+               href="https://www.figma.com/design/4nOEGgU6dEuY819lVLjSBW/Laila_Mansour_Portfolio_Assignment?node-id=0-1&p=f&t=RAqWIrq7w7wI7LxO-0"
+               target="_blank">
+              <span class="icon">↗</span>
+              <span>Open Workshop 2 (Figma)</span>
+            </a>
           </article>
 
           <!-- Workshop 3 -->
           <article class="workshop-card">
+            <div class="workshop-tag">Design</div>
             <h2>Workshop 3</h2>
-            <p><span class="label">Description: </span>Short description or key outcomes.</p>
-            <p><span class="label">Link to submission: </span>
-              <a href="#" target="_blank">Link here</a>
+            <p>
+              <span class="label">Description: </span>
+              Goodreads redesign prototype focusing on improved UX.
             </p>
+            <a class="pill-link"
+               href="https://www.figma.com/proto/yCDWI5mEK2Xzkxk8IkXq17/Goodreads-Redesign-%E2%80%93-Laila-Mansour?node-id=1-2"
+               target="_blank">
+              <span class="icon">↗</span>
+              <span>Open Workshop 3 (Figma)</span>
+            </a>
           </article>
 
           <!-- Workshop 4 -->
           <article class="workshop-card">
+            <div class="workshop-tag">Evaluation</div>
             <h2>Workshop 4</h2>
-            <p><span class="label">Description: </span>Short description or key outcomes.</p>
-            <p><span class="label">Link to submission: </span>
-              <a href="#" target="_blank">Link here</a>
+            <p>
+              <span class="label">Description: </span>
+              Short description or key outcomes of Workshop 4 go here.
             </p>
+            <a class="pill-link" href="#" target="_blank">
+              <span class="icon">↗</span>
+              <span>View submission</span>
+            </a>
           </article>
 
           <!-- Workshop 5 -->
           <article class="workshop-card">
+            <div class="workshop-tag">HTA</div>
             <h2>Workshop 5</h2>
-            <p><span class="label">Description: </span>Short description or key outcomes.</p>
-            <p><span class="label">Link to submission: </span>
-              <a href="#" target="_blank">Link here</a>
+            <p>
+              <span class="label">Description: </span>
+              Hierarchical Task Analysis and refined requirements for the cinema app.
             </p>
+            <a class="pill-link"
+               href="Workshop%205%20final%20sub.pdf"
+               target="_blank">
+              <span class="icon">↗</span>
+              <span>Workshop 5 PDF</span>
+            </a>
           </article>
 
           <!-- Workshop 6 -->
           <article class="workshop-card">
+            <div class="workshop-tag">UX map</div>
             <h2>Workshop 6</h2>
-            <p><span class="label">Description: </span>UX design / journey map for Dan.</p>
-            <p><span class="label">Link to submission: </span>
-              <a href="#" target="_blank">Journey map</a>
+            <p>
+              <span class="label">Description: </span>
+              UX design and journey map for Dan booking accessible cinema tickets.
             </p>
+            <a class="pill-link"
+               href="https://www.figma.com/design/EO4mI0POC7leLDDDK6Pgrz/Untitled?t=jBwvtSMb7NBncesC-0"
+               target="_blank">
+              <span class="icon">↗</span>
+              <span>Journey map (Figma)</span>
+            </a>
           </article>
 
           <!-- Workshop 7 -->
           <article class="workshop-card">
+            <div class="workshop-tag">Report</div>
             <h2>Workshop 7</h2>
-            <p><span class="label">Description: </span>Short description or key outcomes.</p>
-            <p><span class="label">Link to submission: </span>
-              <a href="#" target="_blank">Link here</a>
+            <p>
+              <span class="label">Description: </span>
+              Final write-up / reflection for the cinema booking project.
             </p>
+            <a class="pill-link"
+               href="Workshop%207.pdf"
+               target="_blank">
+              <span class="icon">↗</span>
+              <span>Workshop 7 PDF</span>
+            </a>
           </article>
         </div>
       </section>
@@ -218,6 +423,7 @@
 
     <footer>
       Contact me at
+      <!-- TODO: change to your real email -->
       <a href="mailto:your.email@example.com">your.email@example.com</a>
     </footer>
   </div>
